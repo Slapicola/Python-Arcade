@@ -13,9 +13,13 @@ HEIGHT = 150
 # Set margins
 MARGINS = 5
 
-# Math to figure out screen dimensions
-WINDOW_WIDTH = (WIDTH + MARGINS) * COLUMN_COUNT + MARGINS
-WINDOW_HEIGHT = (HEIGHT + MARGINS) * ROW_COUNT + MARGINS
+# Math to figure out board dimensions
+BOARD_WIDTH = (WIDTH + MARGINS) * COLUMN_COUNT + MARGINS
+BOARD_HEIGHT = (HEIGHT + MARGINS) * ROW_COUNT + MARGINS
+
+# Set height and width for the window
+WINDOW_WIDTH = 800
+WINDOW_HEIGHT = 600
 
 class GameView(arcade.View):
 
@@ -34,6 +38,9 @@ class GameView(arcade.View):
         # 3. Clear the screen
         self.clear()
 
+        # Draw title
+        arcade.draw_text("Tic-Tac-Toe", 300, 500, arcade.color.WHITE, 40)
+
         # Draw the grid
         for row in range(ROW_COUNT):
             for column in range(COLUMN_COUNT):
@@ -41,7 +48,7 @@ class GameView(arcade.View):
                 y = (MARGINS + HEIGHT) * row + MARGINS + HEIGHT // 2
 
                 # Draw the box
-                arcade.draw_rect_filled(arcade.rect.XYWH(x, y, WIDTH, HEIGHT), arcade.color.WHITE)
+                arcade.draw_rect_filled(arcade.rect.XYWH(x + 165, y + 25, WIDTH, HEIGHT), arcade.color.WHITE)
 
         # # 5. Draw an outlined circle (practice for Xs and Os)
         # arcade.draw_circle_outline(400, 300, 50, arcade.color.GREEN)
