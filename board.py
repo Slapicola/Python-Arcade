@@ -1,4 +1,4 @@
-# Run Command: py -3.12 test.py
+# Run Command: py -3.12 board.py
 
 import arcade
 
@@ -27,15 +27,46 @@ class GameView(arcade.View):
         super().__init__()
 
         # Create a two-dimensional array
+        # looks like this:
+        # [
+        #       [0, 0, 0],
+        #       [0, 0, 0],
+        #       [0, 0, 0]
+        # ]
         self.grid = []
         for row in range(ROW_COUNT):
             self.grid.append([])
             for column in range(COLUMN_COUNT):
                 self.grid[row].append(0)
+
+    # testing for on_mouse_press() (Checks where the mouse is clicked)
+    # (prints the coordinates to the console.)
+    def on_mouse_press(self, x, y, button, modifiers):
+        if (x >= 170 and x <= 316 and y >= 347 and y <= 489):
+            print("Clicked at: Top Left")
+        elif (x >= 326 and x <= 472 and y >= 346 and y <= 487):
+            print("Clicked at: Top Middle")
+        elif (x >= 476 and x <= 622 and y >= 346 and y <= 487):
+            print("Clicked at: Top Right")
+        elif (x >= 170 and x <= 316 and y >= 197 and y <= 339):
+            print("Clicked at: Middle Left")
+        elif (x >= 326 and x <= 472 and y >= 196 and y <= 337):
+            print("Clicked at: Middle Middle")
+        elif (x >= 476 and x <= 622 and y >= 196 and y <= 337):
+            print("Clicked at: Middle Right")
+        elif (x >= 170 and x <= 316 and y >= 39 and y <= 189):
+            print("Clicked at: Bottom Left")
+        elif (x >= 326 and x <= 472 and y >= 39 and y <= 189):
+            print("Clicked at: Bottom Middle")
+        elif (x >= 476 and x <= 622 and y >= 39 and y <= 189):
+            print("Clicked at: Bottom Right")
+
+        print(f"Clicked at: x = {x}, y = {y}")
+            
         
 
     def on_draw(self):
-        # 3. Clear the screen
+        # Clear the screen
         self.clear()
 
         # Draw title
